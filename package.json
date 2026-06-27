@@ -1,0 +1,25 @@
+{
+  "name": "bookevent",
+  "version": "1.0.0",
+  "description": "BookEvent is a full-stack MERN Event Booking Platform built with React, Node.js, Express, and MongoDB. It features secure authentication, OTP email verification, event management, ticket booking workflow, user dashboards, and an admin panel for managing bookings, payments, and analytics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somrajwadkar/BookEvent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/somrajwadkar/BookEvent/issues"
+  },
+  "homepage": "https://github.com/somrajwadkar/BookEvent#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}
