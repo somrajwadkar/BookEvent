@@ -119,6 +119,3 @@ exports.resendOTP = async (req, res) => {
     }
 
 
-
-
-
