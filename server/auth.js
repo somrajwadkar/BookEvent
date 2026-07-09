@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
-const protect = async (req, res, next) => {
+const protect = async (req, res, next) => { // here are the protect in Auth middleware
     let token = req.headers.authorization;
     if (token && token.startsWith('Bearer')) {
         try {
             token = token.split(' ')[1];
-            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            const decoded = jwt.verify(token, process.env.JWT_SECRET); // verify the token using the secret key
             req.user = await User.findById(decoded.id).select('-password');
             if (!req.user) {
                 return res.status(401).json({ message: 'Not authorized, user not found' });
@@ -20,5 +20,5 @@ const protect = async (req, res, next) => {
     }
 };
 
- console.log('Auth middleware loaded');
+ console.log('Auth middleware loaded');// the console log statement is used to indicate that the auth middleware has been loaded successfully.
 module.exports = { protect };   
