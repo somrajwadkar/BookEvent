@@ -92,30 +92,3 @@ exports.verifyOTP = async (req, res) => {
         res.status(500).json({ message: 'Server Error' });
     }
 };
-
-
-exports.resendOTP = async (req, res) => {
-    try {
-        const { email } = req.body;
-        const user = await User.findOne({ email });
-        if (!user) return res
-
-    }
-
-.status(400).json({ message: 'User not found' });
-
-        if (user.isVerified) {
-            return res.status(400).json({ message: 'Account already verified' });
-        }
-
-        const otp = generateOTP();
-        await OTP.findOneAndDelete({ email, action: 'account_verification' });
-        await OTP.create({ email, otp, action: 'account_verification' });
-        await sendOTPEmail(email, otp, 'account_verification');
-
-        res.json({ message: 'OTP resent to email', email });
-    } catch (error) {
-        res.status(500).json({ message: 'Server Error', error: error.message });
-    }
-
-

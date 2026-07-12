@@ -22,3 +22,4 @@ const protect = async (req, res, next) => { // here are the protect in Auth midd
 
  console.log('Auth middleware loaded');// the console log statement is used to indicate that the auth middleware has been loaded successfully.
 module.exports = { protect };   
+
