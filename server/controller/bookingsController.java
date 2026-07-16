@@ -93,3 +93,33 @@ exports.getMyBookings = async (req, res) => {
         res.status(500).json({ message: 'Server Error', error: error.message });
     }
 };
+
+
+exports.cancelBooking = async (req, res) => {
+    try {
+        const booking = await Booking.findById(req.params.id);
+        if (!booking) return res.status(404).json({ message: 'Booking not found' });
+        if (booking.userId.toString() !== req.user.id && req.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Not authorized' });
+        }
+        if (booking.status === 'cancelled') return res.status(400).json({ message: 'Already cancelled' });
+
+        const wasConfirmed = booking.status === 'confirmed';
+
+        booking.status = 'cancelled';
+        await booking.save();
+
+        // Only restore the seat if it was actually confirmed and deducted
+        if (wasConfirmed) {
+            const event = await Event.findById(booking.eventId);
+            if (event) {
+                event.availableSeats += 1;
+                await event.save();
+            }
+        }
+
+        res.json({ message: 'Booking cancelled successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error: error.message });
+    }
+};
