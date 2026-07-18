@@ -9,4 +9,4 @@ router.post('/', protect, admin, createEvent); // Create event route is protecte
 router.put('/:id', protect, admin, updateEvent);// Update event route is protected and only accessible by admin users
 router.delete('/:id', protect, admin, deleteEvent);// Delete event route is protected and only accessible by admin users
 
-module.exports = router;
+module.exports = router; // Export the router to be used in the main application file
