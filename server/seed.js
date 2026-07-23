@@ -5,7 +5,30 @@ const User = require('./models/User');
 const Event = require('./models/Event');
 const Booking = require('./models/Booking');
 
-dotenv.config();
+dotenv.config(); // Load environment variables from .env file
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/eventora', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('MongoDB Connected'))
+.catch(err => console.error('MongoDB Connection Error:', err));
+
+// Seed Users
+const seedUsers = async () => {
+    try {
+        await User.deleteMany({});
+        const hashedUsers = await Promise.all(users.map(async user => {
+            const hashedPassword = await bcrypt.hash(user.password, 10);
+            return { ...user, password: hashedPassword };
+        }));
+        await User.insertMany(hashedUsers);
+        console.log('Users seeded successfully');
+    } catch (err) {
+        console.error('Error seeding users:', err);
+    }
+}
 
 const users = [
     { name: 'Admin User', email: 'admin@eventora.com', password: 'password123', role: 'admin' },
