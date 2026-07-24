@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/eventora', 
 // Seed Users
 const seedUsers = async () => {
     try {
-        await User.deleteMany({});
+        await User.deleteMany({}); // Clear existing users
         const hashedUsers = await Promise.all(users.map(async user => {
             const hashedPassword = await bcrypt.hash(user.password, 10);
             return { ...user, password: hashedPassword };
@@ -30,6 +30,18 @@ const seedUsers = async () => {
     }
 }
 
+// Seed Events
+// const seedEvents = async () => {
+//     try {
+//         await Event.deleteMany({}); // Clear existing events
+//         await Event.insertMany(events);
+//         console.log('Events seeded successfully');
+//     } catch (err) {
+//         console.error('Error seeding events:', err);
+//     }
+// }
+
+// Seed Bookings
 const users = [
     { name: 'Admin User', email: 'admin@eventora.com', password: 'password123', role: 'admin' },
     { name: 'Demo User', email: 'user@eventora.com', password: 'password123', role: 'user' },
