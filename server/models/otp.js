@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const otpSchema = new mongoose.Schema({
+const otpSchema = new mongoose.Schema({ // here are the OTP Functioning Schema
     email: { type: String, required: true },
     otp: { type: String, required: true },
     action: { type: String, enum: ['account_verification', 'event_booking'], required: true },
