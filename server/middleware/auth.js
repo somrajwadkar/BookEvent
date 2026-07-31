@@ -20,7 +20,7 @@ const protect = async (req, res, next) => {
     }
 };
 
-const admin = (req, res, next) => {
+const admin = (req, res, next) => { //Admin Related Method
     if (req.user && req.user.role === 'admin') {
         next();
     } else {
