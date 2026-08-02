@@ -44,7 +44,7 @@ exports.createEvent = async (req, res) => {
     }
 };
 
-exports.updateEvent = async (req, res) => {
+exports.updateEvent = async (req, res) => { //here we are Updating All the Events in the BookEvent
     try {
         const event = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!event) return res.status(404).json({ message: 'Event not found' });
