@@ -10,3 +10,14 @@ const transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASS
     }
 });
+
+
+const sendBookingEmail = async (userEmail, userName, eventTitle) => {
+    try {
+        const mailOptions = 
+        await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully to', userEmail);
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+};
