@@ -1,25 +1,23 @@
 {
-  "name": "bookevent",
+  "name": "eventora",
+  "private": true,
   "version": "1.0.0",
-  "description": "BookEvent is a full-stack MERN Event Booking Platform built with React, Node.js, Express, and MongoDB. It features secure authentication, OTP email verification, event management, ticket booking workflow, user dashboards, and an admin panel for managing bookings, payments, and analytics.",
-  "main": "index.js",
+  "description": "Root scripts for Eventora client and server",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install:all": "npm install --prefix server --legacy-peer-deps && npm install --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev:server\" \"npm run dev:client\"",
+    "start:server": "npm run start --prefix server",
+    "start:client": "npm run preview --prefix client",
+    "start": "concurrently -n server,client -c blue,green \"npm run start:server\" \"npm run start:client\"",
+    "build": "npm run build --prefix client",
+    "lint": "npm run lint --prefix client",
+    "setup": "npm run install:all",
+    "dev:all": "npm run install:all && npm run dev",
+    "start:all": "npm run install:all && npm run start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/somrajwadkar/BookEvent.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/somrajwadkar/BookEvent/issues"
-  },
-  "homepage": "https://github.com/somrajwadkar/BookEvent#readme",
-  "dependencies": {
-    "express": "^5.2.1",
-    "nodemon": "^3.1.14"
+  "devDependencies": {
+    "concurrently": "^9.0.1"
   }
 }
