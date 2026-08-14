@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({ //the All About Transporter Stored in .ENV
     service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
