@@ -56,7 +56,7 @@ const users = [
 ];
 
 
-const events = [
+const events = [ //the Events React And Node.js
     {
         title: 'React & Node.js Developer Retreat',
         description: 'Join us for a 3-day deep dive into modern full-stack web development. Perfect for developers looking to take their skills to the next level.',
