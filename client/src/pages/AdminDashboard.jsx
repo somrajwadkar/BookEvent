@@ -38,3 +38,27 @@ const AdminDashboard = () => {
         }
     };
   }
+
+
+   const handleCreateEvent = async (e) => {
+        e.preventDefault();
+        try {
+            await api.post('/events', formData);
+            setShowEventForm(false);
+            setFormData({ title: '', description: '', date: '', location: '', category: '', totalSeats: '', ticketPrice: '', image: '' });
+            fetchData();
+        } catch (error) {
+            alert(error.response?.data?.message || 'Error creating event');
+        }
+    };
+
+    const handleDeleteEvent = async (id) => {
+        if (window.confirm('Are you sure you want to delete this event?')) {
+            try {
+                await api.delete(`/events/${id}`);
+                fetchData();
+            } catch (error) {
+                alert('Error deleting event');
+            }
+        }
+    };
