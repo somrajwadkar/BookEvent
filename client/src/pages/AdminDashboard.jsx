@@ -71,3 +71,14 @@ const AdminDashboard = () => {
             alert(error.response?.data?.message || 'Error confirming booking');
         }
     };
+
+     const handleCancelBooking = async (id) => {
+        if (window.confirm('Cancel this user\'s booking request?')) {
+            try {
+                await api.delete(`/bookings/${id}`);
+                fetchData();
+            } catch (error) {
+                alert(error.response?.data?.message || 'Error cancelling booking');
+            }
+        }
+    };
