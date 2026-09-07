@@ -82,3 +82,23 @@ const AdminDashboard = () => {
             }
         }
     };
+
+    if (loading) return <div className="text-center py-20 text-xl font-semibold">Loading admin panel...</div>;
+
+    return (
+        <div className="max-w-7xl mx-auto">
+            <div className="bg-black text-white rounded-2xl p-6 sm:p-8 mb-8 shadow-lg flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+                <div>
+                    <h1 className="text-2xl sm:text-3xl font-extrabold mb-2">Admin Dashboard</h1>
+                    <p className="text-gray-300">Manage events and manually confirm bookings.</p>
+                </div>
+                <button
+                    onClick={() => setShowEventForm(!showEventForm)}
+                    className="w-full md:w-auto bg-white text-black font-bold py-3 px-6 rounded-lg hover:bg-gray-100 transition shadow-md"
+                >
+                    {showEventForm ? 'Cancel Creation' : '+ Create New Event'}
+                </button>
+            </div>
+              {/* Admin Stats Row */}
+
+              </div>)
