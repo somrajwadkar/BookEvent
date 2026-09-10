@@ -115,6 +115,9 @@ const AdminDashboard = () => {
                         <h3 className="text-3xl font-black text-blue-600">{new Set(bookings.filter(b => b.paymentStatus === 'paid' && b.status === 'confirmed').map(b => b.userId?._id)).size}</h3>
                     </div>
                     </div>
+
+
+                    
                     </div>
 
               </div>)
