@@ -1,4 +1,5 @@
-function App() {
+function App() { //here are teh Main Router Functions
+    
     return (
         <Router>
             <div className="min-h-screen bg-gray-50 flex flex-col">
