@@ -58,4 +58,8 @@ const EventDetail = () => {
         }
     };
 
+      if (loading) return <div className="text-center py-20 text-xl font-semibold">Loading...</div>;
+    if (error && !event) return <div className="text-center py-20 text-xl text-red-500">{error || 'Event not found'}</div>;
+
+
 }
