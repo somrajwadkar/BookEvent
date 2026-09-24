@@ -379,6 +379,8 @@ const EventDetail = () => {
                                             the OTP.
                                         </p>
                                     )}
+
+                                    
                                 </div>
                             </div>
 
