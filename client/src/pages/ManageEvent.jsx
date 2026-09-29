@@ -1,3 +1,4 @@
+//manages All the Events 
 const handleBooking = async () => {
 
         // If user is not logged in, redirect to login page
