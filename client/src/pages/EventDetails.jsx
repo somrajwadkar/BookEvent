@@ -179,6 +179,22 @@ const EventDetail = () => {
         );
     }
 
+     if (loading) {
+        return (
+            <div className="min-h-[70vh] flex items-center justify-center">
+                <div className="text-center">
+
+                    {/* Loading spinner */}
+                    <div className="w-12 h-12 border-4 border-gray-300 border-t-gray-900 rounded-full animate-spin mx-auto mb-4"></div>
+
+                    <p className="text-lg font-semibold text-gray-700">
+                        Loading event details...
+                    </p>
+                </div>
+            </div>
+        );
+    }
+
     // Display this message if event data could not be found
     if (!event) {
         return (
